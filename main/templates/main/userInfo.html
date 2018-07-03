@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% block title %}User Info{% endblock %}
+
+{% block body %}
+{% load staticfiles %}
+<div class="container-fluid" style="text-align: center;">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>username {{request.user}}</h1>
+        <!--<h2><a href="/rl">Requests</a></h2>-->
+      </div>
+    </div>
+</div>
+{% endblock %}

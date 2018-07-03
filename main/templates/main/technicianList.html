@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% block title %}Technician List{% endblock %}
+
+{% block body %}
+{% load staticfiles %}
+<div class="container-fluid" style="text-align: center;">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Tech List</h1>
+        <table class="table table-striped table-light" style="color:black;">
+          <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+          {% for technician in technicianList %}
+            <tr>
+              <td>{{technician.username}}</td>
+              <td>{{technician.first_name}}</td>
+              <td>{{technician.last_name}}</td>
+              <td>{{technician.email}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        
+          <h1></h1>
+          <h1></h1>
+          <h1></h1>
+        
+      </div>
+    </div>
+</div>
+{% endblock %}

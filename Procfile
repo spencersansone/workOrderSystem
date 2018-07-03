@@ -1,0 +1,1 @@
+web: gunicorn workOrderSystem.wsgi
