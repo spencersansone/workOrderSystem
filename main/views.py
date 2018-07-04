@@ -51,13 +51,21 @@ def userInfo(request):
 def technicianList(request):
     
     x={}
-    x['technicianList'] = User.objects.filter(groups__name="Technicians")
+    x['technicianList'] = User.objects.filter(groups__name="Technicians").order_by('last_name')
     return render(request, 'main/technicianList.html', x)
     
-def requestList(request):
+def clientRequestList(request):
     
     x={}
-    x['requestList'] = RequestEntry.objects.all()
+    x['clientRequestList'] = ClientRequest.objects.all().order_by('due_date')
     
-    return render(request, 'main/requestList.html', x)
+    return render(request, 'main/clientRequestList.html', x)
+
+def commonAreaRequestList(request):
+    
+    x={}
+    x['commonAreaRequestList'] = CommonAreaRequest.objects.all().order_by('due_date')
+    
+    return render(request, 'main/commonAreaRequestList.html', x)
+
 # Create your views here.
