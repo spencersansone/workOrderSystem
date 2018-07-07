@@ -7,24 +7,27 @@
     <div class="row">
       <div class="col-sm-12">
         <h1>Tech List</h1>
+        
         <br>
         <table class="table table-striped table-light" style="color:black;">
           <thead>
             <tr>
               <th scope="col">Username</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
+              <th scope="col">Name</th>
+              <th scope="col">Contact Info</th>
               
             </tr>
           </thead>
           <tbody>
-          {% for technician in technicianList %}
+          {% for t in technicianList %}
             <tr>
-              <td>{{technician.username}}</td>
-              <td>{{technician.first_name}}</td>
-              <td>{{technician.last_name}}</td>
-              <td>{{technician.email}}</td>
+              <td>{{t.user_account.username}}</td>
+              <td>{{t.get_full_name}}</td>
+              <td>
+                Email: <a href="mailto:{{t.email}}">{{t.email}}</a>
+                <br>
+                Phone: <a href="tel:{{t.phone_number}}">{{t.phone_number}}</a>
+              </td>
             </tr>
           {% endfor %}
           </tbody>

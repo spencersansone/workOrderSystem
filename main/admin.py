@@ -24,3 +24,9 @@ class CommonAreaRequestList(admin.ModelAdmin):
     ordering = ['due_date']
 
 admin.site.register(CommonAreaRequest, CommonAreaRequestList)
+
+class UserProfileList(admin.ModelAdmin):
+    list_display = ('user_account','first_name','last_name','email','phone_number',)
+    ordering = ['last_name']
+
+admin.site.register(UserProfile, UserProfileList)

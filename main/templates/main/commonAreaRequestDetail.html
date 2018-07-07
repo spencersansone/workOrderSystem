@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% block title %}User Info{% endblock %}
+
+{% block body %}
+{% load staticfiles %}
+<div class="container-fluid" style="text-align: center;">
+  <div class="row">
+    <div class="col-sm-12">
+      <a href="{% url 'main:commonAreaRequestList' %}"><button type="button" class="btn btn-danger btn-lg btn-block">Back</button></a>
+      <br>
+      <ul class="list-group" style="color:black;">
+        <li class="list-group-item active" style="font-weight: bold;font-size: 150%;">
+          #{{ commonarearequest.id }}
+          <br>
+          Title: {{ commonarearequest.title }}
+        </li>
+        <li class="list-group-item">Client: {{ commonarearequest.common_area }}</li>
+        <li class="list-group-item">Description:<br>{{ commonarearequest.description }}</li>
+        <li class="list-group-item">Due Date: {{ commonarearequest.due_date }}</li>
+        <li class="list-group-item">Technician: {{ commonarearequest.technician }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

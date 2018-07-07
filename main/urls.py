@@ -13,6 +13,9 @@ urlpatterns = [
     url(r'^carl/$', views.commonAreaRequestList, name='commonAreaRequestList'),
     url(r'^user/$', views.userInfo, name="userInfo"),
     url(r'^t/$', views.technicianList, name="technicianList"),
+    #/music/<album_id>/
+    url(r'^crl/(?P<pk>[0-9]+)/$', views.clientRequestDetail.as_view(), name='clientRequestDetail'),
+    url(r'^carl/(?P<pk>[0-9]+)/$', views.commonAreaRequestDetail.as_view(), name='commonAreaRequestDetail'),
 ]
 admin.site.site_header = 'Work Order System Admin Area'
 admin.site.site_title = 'Work Order System Admin Area'

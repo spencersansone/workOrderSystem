@@ -14,6 +14,7 @@ import binascii
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
+from django.views import generic
 
 def login_user(request):
     if request.method == "POST":
@@ -50,9 +51,18 @@ def userInfo(request):
 
 def technicianList(request):
     
+    technicianArray = []
+    for user in User.objects.filter(groups__name="Technicians"):
+        technicianArray += [UserProfile.objects.get(user_account=user)]
+    
     x={}
-    x['technicianList'] = User.objects.filter(groups__name="Technicians").order_by('last_name')
+    # x['technicianList'] = User.objects.filter(groups__name="Technicians").order_by('last_name')
+    x['technicianList'] = technicianArray
     return render(request, 'main/technicianList.html', x)
+    
+
+    
+    
     
 def clientRequestList(request):
     
@@ -67,5 +77,14 @@ def commonAreaRequestList(request):
     x['commonAreaRequestList'] = CommonAreaRequest.objects.all().order_by('due_date')
     
     return render(request, 'main/commonAreaRequestList.html', x)
+    
+class clientRequestDetail(generic.DetailView):
+    model = ClientRequest
+    template_name = 'main/clientRequestDetail.html'
+    
+class commonAreaRequestDetail(generic.DetailView):
+    model = CommonAreaRequest
+    template_name = 'main/commonAreaRequestDetail.html'
+    
 
 # Create your views here.

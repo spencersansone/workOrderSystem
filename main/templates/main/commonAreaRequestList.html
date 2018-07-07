@@ -6,26 +6,24 @@
 <div class="container-fluid" style="text-align: center;">
     <div class="row">
       <div class="col-sm-12">
+        <a href="{% url 'main:home' %}"><button type="button" class="btn btn-danger btn-lg btn-block">Back</button></a>
+        <br>
         <h1>Common Area Request List</h1>
         <br>
         <table class="table table-striped table-light" style="color:black;">
           <thead>
             <tr>
               <th scope="col">Title</th>
-              <th scope="col">Common Area</th>
-              <th scope="col">Description</th>
               <th scope="col">Due Date</th>
               <th scope="col">Technician</th>
             </tr>
           </thead>
           <tbody>
-          {% for request in commonAreaRequestList %}
+          {% for r in commonAreaRequestList %}
             <tr>
-              <td scope="row">{{request.title}}</td>
-              <td>{{request.common_area}}</td>
-              <td>{{request.description}}</td>
-              <td>{{request.due_date}}</td>
-              <td>{{request.technician}}<br>{{request.technician.get_full_name}}</td>
+              <td scope="row"><a href="{% url 'main:commonAreaRequestList' %}{{r.id}}/">{{r.title}}</a></td>
+              <td>{{r.due_date}}</td>
+              <td>{{r.technician}}<br>{{r.technician.get_full_name}}</td>
             </tr>
           {% endfor %}
           </tbody>
